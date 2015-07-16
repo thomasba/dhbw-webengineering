@@ -29,6 +29,18 @@
 		<div class="container">
 			<div class="row">
 				<div class="navigation col-md-3">
+					<h4>User</h4>
+					<p>
+						<img src="images/user.png" alt="user">
+						Current user: <span id="username">unknown!</span>
+					</p>
+					<p>
+						<a href="javascript:logout()">
+							<img src="images/log-out.png" alt="log out">
+							Log out
+						</a>
+					</p>
+					<h4>Calendar</h4>
 					<div class="list-group">
 						<a class="list-group-item" href="#" onclick="showCategory(0)">
 							<img src="images/view-calendar-list.png" alt=""> Show appointments
@@ -41,7 +53,7 @@
 						<input type="checkbox" id="showPastAppointments" onclick="getListItems()">
 						Show appointments from the past
 					</label>
-					<h3>Categories:</h3>
+					<h4>Categories:</h4>
 					<div class="list-group" id="categoryList"></div>
 					<form method="get" action="javascript:createNewCategory()" id="createCategory">
 						<div class="input-group">

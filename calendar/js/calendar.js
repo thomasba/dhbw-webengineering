@@ -1,8 +1,8 @@
-var username = "root";
+var username = "";
 var appointments;
 var categories;
 var filter = 0;
-var host = "://dhbw.t-battermann.de/calendar/rewrite.php";
+var host = "//dhbw.t-battermann.de/calendar/redirect.php";
 
 function getListItems() {
 	var request = new XMLHttpRequest();
@@ -594,6 +594,44 @@ function deleteCategoryFromEventOnReadyStatusChangeEventHandler( request, eventI
 		}
 	}
 }
+function getCookie(name) {
+	var cname = name + "=";
+	var cookies = document.cookie.split(';');
+	for(var i=0;i<cookies.length; i++) {
+		var cookie = cookies[i];
+		while(cookie.charAt(0) == ' ')
+			cookie = cookie.substring(1);
+		if(cookie.indexOf(cname) == 0)
+			return cookie.substring(cname.length, cookie.length);
+	}
+	return "";
+}
+function setCookie(name, value) {
+	var d = new Date();
+	d.setTime( d.getTime() + 31536000000 );
+	document.cookie = name + "=" + value + "; expires=" + d.toUTCString();
+}
+function logout() {
+	var d = new Date();
+	d.setTime( d.getTime() - 86400000 );
+	document.cookie = "username=; expires=" + d.toUTCString();
+	location.reload();
+}
+function login() {
+	r = /[a-zA-Z0-9_ äöüÄÖÜß-]{1,10}/;
+	if (!r.exec(username) && !r.exec(getCookie("username")) ) {
+		do{
+			username = prompt("Please enter your username", "root");
+		}while(! r.exec(username) );
+	}else{
+		if( !r.exec(username) ){
+			username = getCookie("username");
+		}
+	}
+	setCookie("username", username);
+	document.getElementById("username").innerHTML = username;
+}
 
+login();
 showCategory(0);
 getCategories();
