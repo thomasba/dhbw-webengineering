@@ -155,7 +155,7 @@ function getListItemOnReadyStatusChangeEventHandler( request, id ) {
 				urli = document.createElement("li");
 				url = document.createElement("a");
 				url.appendChild(document.createTextNode(appointments[i].webpage));
-				url.href = appointments[i].url;
+				url.href = appointments[i].webpage;
 				urli.className = "url";
 				urli.appendChild(url);
 				info.appendChild(urli);
