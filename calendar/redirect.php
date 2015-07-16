@@ -43,7 +43,7 @@ $header = "";
 foreach ($_FILES as $key => $value)
 {
     $header = array('Content-Type: multipart/form-data');
-    $post[htmlspecialchars($key)] = '@' . $value['tmp_name'] . ';type=' . $value['type'] . ';filename=' . $value['name'];
+	$post[htmlspecialchars($key)] = new CurlFile($value['tmp_name'], $value['type'], $value['name']);
 }
 
 // Init cURL
