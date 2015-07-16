@@ -1,0 +1,78 @@
+
+<h2 id="header">Create new Appointment</h2>
+<form class="form-horizontal" id="calendar-entry" name="calendar-entry" action="javascript:createNewEntry()">
+	<!--  title -->
+	<div class="form-group">
+		<label class="control-label col-sm-2" for="title">Title:</label>
+		<div class="col-sm-10">
+			<input class="form-control" id="title" title="max. 50 chars" type="text" name="title" placeholder="Title" required="required" pattern=".{1,50}">
+		</div>
+	</div>
+	<!-- location -->
+	<div class="form-group">
+		<label class="control-label col-sm-2" for="location">Location:</label>
+		<div class="col-sm-10">
+			<input class="form-control" id="location" title="max. 50 chars" name="location" placeholder="200 E MAIN ST, PHOENIX AZ 85123, USA" pattern=".{0,50}">
+		</div>
+	</div>
+	<!-- organizer -->
+	<div class="form-group">
+		<label class="control-label col-sm-2" for="organizer">Organizer:</label>
+		<div class="col-sm-10">
+			<input class="form-control" type="email" title="max. 50 chars" id="organizer" name="organizer" placeholder="ant-man@exmaple.com" required="required" pattern=".{0,50}">
+		</div>
+	</div>
+	<!-- begin -->
+	<div class="form-group">
+		<label class="control-label col-sm-2" for="begin-date">Begin:</label>
+
+		<div class="col-sm-6">
+			<input class="form-control" id="begin-date" type="date" name="begin-date" size="10" placeholder="yyyy-mm-dd" required="required" pattern="\d{4}-\d\d-\d\d">
+		</div>
+		<div class="col-sm-4">
+			<input class="form-control" type="time" name="begin-time" id="begin-time" size="5" placeholder="HH:MM" required="required" pattern="\d\d:\d\d">
+		</div>
+	</div>
+	<!-- end -->
+	<div class="form-group">
+		<label class="control-label col-sm-2" for="end-date">End:</label>
+
+		<div class="col-sm-6">
+			<input class="form-control" id="end-date" type="date" name="end-date" size="10" placeholder="yyyy-mm-dd" required="required" pattern="\d{4}-\d\d-\d\d">
+		</div>
+		<div class="col-sm-4">
+			<input class="form-control" id="end-time" type="time" name="end-time" size="5" placeholder="HH:MM" required="required" pattern="\d\d:\d\d">
+		</div>
+
+	</div>
+	<!-- status -->
+	<div class="form-group">
+		<label class="control-label col-sm-2" for="status">Status:</label>
+
+		<div class="col-sm-10">
+			<select class="form-control" name="stauts" id="status" required="required">
+				<option style="background-color:#d6e9c6;color:#3c763d">Free</option>
+				<option style="background-color:#f2dede;color:#a94442">Busy</option>
+				<option style="background-color:#fcf8e3;color:#8a6d3b">Tentative</option>
+			</select>
+		</div>
+
+	</div>
+	<!-- allday -->
+	<div class="form-group">
+		<label class="control-label col-sm-2" for="allday">Allday</label>
+		<div class="col-sm-10">
+			<input class="form-control" type="checkbox" id="allday" name="allday" value="1">
+		</div>
+	</div>
+	<!-- url -->
+	<div class="form-group">
+		<label class="control-label col-sm-2" for="webpage">Url:</label>
+		<div class="col-sm-10">
+			<input class="form-control" type="url" id="webpage" name="webpage" value="" placeholder="http://example.com/">
+		</div>
+	</div>
+	<div>
+		<input class="form-control" type="submit" value="speichern" />
+	</div>
+</form>

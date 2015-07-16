@@ -1,0 +1,22 @@
+<div class="panel-heading">Upload/delete image</div>
+<div class="panel-body">
+	<form class="form-horizontal" id="appointment-##id##" name="calendar-entry" action="javascript:uploadImage( ##id## )">
+		<!--  title -->
+		<div class="form-group">
+			<label class="control-label col-sm-2" for="title-##id##">Title:</label>
+			<div class="col-sm-10">
+				<input class="form-control" type="file" title="JPEG or PNG Image" id="image-##id##" name="image" placeholder="JPG / PNG">
+			</div>
+			<!-- allday -->
+		</div>
+		<div class="form-group">
+			<label class="control-label col-sm-2" for="delete-##id##">Delete image:</label>
+			<div class="col-sm-10">
+				<input class="form-control" type="checkbox" id="delete-##id##" name="delete" value="1">
+			</div>
+		</div>
+		<div>
+			<input class="form-control" type="submit" value="speichern" />
+		</div>
+	</form>
+</div>

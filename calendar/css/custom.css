@@ -1,0 +1,56 @@
+body {
+	padding-top: 95px;
+}
+.starter-template {
+	padding: 40px 15px;
+	text-align: center;
+}
+.small img {
+	width:auto;
+	height:auto;
+	max-width:128px;
+	max-height:128px;
+}
+input:invalid, textarea:invalid, select:invalid {
+	border-color:#ebccd1;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(235, 204, 209, 0.6);
+	outline: 0 none;
+	color: #a94442;
+	background-color: #f2dede;
+}
+.categories li {
+	list-style-image:url(../images/folder.png);
+}
+.date {
+	font-weight:bold;
+	list-style-image:url(../images/date.png);
+}
+.loc {
+	list-style-image:url(../images/location.png);
+}
+.org {
+	list-style-image:url(../images/organizer.png);
+}
+.action {
+	list-style-image:url(../images/action.png);
+}
+.mar {
+	margin:1.5em;
+}
+.navbar h1 {
+	font-family:monospace;
+	letter-spacing:0.4em;
+	text-align:center;
+	color:#fff;
+}
+.bs-docs-footer {
+    border-top: 1px solid #e5e5e5;
+    color: #969696;
+    margin-top: 100px;
+    padding-bottom: 40px;
+    padding-top: 40px;
+    text-align: center;
+}
+.hl {
+	color:#bce8f1;
+}
