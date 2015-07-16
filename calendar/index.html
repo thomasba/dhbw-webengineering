@@ -49,10 +49,14 @@
 							<img src="images/appointment-new.png" alt=""> Create appointment
 						</a>
 					</div>
-					<label for="showPastAppointments">
-						<input type="checkbox" id="showPastAppointments" onclick="getListItems()">
-						Show appointments from the past
-					</label>
+					<div class="input-group">
+						<span class="input-group-addon">
+							<input type="checkbox" id="showPastAppointments" onclick="getListItems()">
+						</span>
+						<label for="showPastAppointments" class="form-control nobold">
+							Show past
+						</label>
+					</div>
 					<h4>Categories:</h4>
 					<div class="list-group" id="categoryList"></div>
 					<form method="get" action="javascript:createNewCategory()" id="createCategory">

@@ -57,3 +57,6 @@ input:invalid, textarea:invalid, select:invalid {
 .hl {
 	color:#bce8f1;
 }
+.nobold {
+	font-weight:normal !important;
+}
