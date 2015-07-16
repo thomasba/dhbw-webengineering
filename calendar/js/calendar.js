@@ -2,13 +2,14 @@ var username = "root";
 var appointments;
 var categories;
 var filter = 0;
+var host = "://dhbw.t-battermann.de/calendar/rewrite.php";
 
 function getListItems() {
 	var request = new XMLHttpRequest();
 	request.onreadystatechange = function() {
 		getListItemOnReadyStatusChangeEventHandler( request, filter );
 	};
-	request.open("GET", "http://host.bisswanger.com/dhbw/calendar.php?user="+username+"&format=json&action=list");
+	request.open("GET", host + "?user="+username+"&format=json&action=list");
 	request.send();
 }
 function showCategory( id ) {
@@ -17,7 +18,7 @@ function showCategory( id ) {
 	request.onreadystatechange = function() {
 		getListItemOnReadyStatusChangeEventHandler( request, id );
 	};
-	request.open("GET", "http://host.bisswanger.com/dhbw/calendar.php?user="+username+"&format=json&action=list");
+	request.open("GET", host + "?user="+username+"&format=json&action=list");
 	request.send();
 }
 function prettyDate(from, to, allday) {
@@ -239,7 +240,7 @@ function createNewCategory() {
 	request.onreadystatechange = function() {
 	   createNewCategoryOnReadyStatusChangeEventHandler( request );
 	};
-	request.open("POST", "http://host.bisswanger.com/dhbw/calendar.php?user="+username+"&format=json&action=add-category&name="+name);
+	request.open("POST", host + "?user="+username+"&format=json&action=add-category&name="+name);
 	request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	request.send("name="+encodeURIComponent(name));
 }
@@ -258,7 +259,7 @@ function getCategories() {
 	request.onreadystatechange = function() {
 		getCategoriesOnReadyStatusChangeEventHandler( request );
 	};
-	request.open("GET", "http://host.bisswanger.com/dhbw/calendar.php?user="+username+"&format=json&action=list-categories");
+	request.open("GET", host + "?user="+username+"&format=json&action=list-categories");
 	request.send();
 }
 function getCategoriesOnReadyStatusChangeEventHandler( request ) {
@@ -294,7 +295,7 @@ function deleteCategory( id ) {
 	request.onreadystatechange = function() {
 		deleteCategoryOnReadyStatusChangeEventHandler( request );
 	};
-	request.open("GET", "http://host.bisswanger.com/dhbw/calendar.php?user="+username+"&format=json&action=delete-category&id=" + encodeURIComponent(id) );
+	request.open("GET", host + "?user="+username+"&format=json&action=delete-category&id=" + encodeURIComponent(id) );
 	request.send();
 }
 function deleteCategoryOnReadyStatusChangeEventHandler( request ) {
@@ -327,7 +328,7 @@ function createNewEntry() {
 	request.onreadystatechange = function() {
 		createNewEntryOnReadyStatusChangeEventHandler( request );
 	};
-	request.open("POST", "http://host.bisswanger.com/dhbw/calendar.php?user="+username+"&format=json&action=add" );
+	request.open("POST", host + "?user="+username+"&format=json&action=add" );
 	request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	var allday = f["allday"].checked;
 	request.send(
@@ -395,7 +396,7 @@ function updateAppointment( id ) {
 	request.onreadystatechange = function() {
 		updateAppointmentOnReadyStatusChangeEventHandler( request );
 	};
-	request.open("POST", "http://host.bisswanger.com/dhbw/calendar.php?user="+username+"&format=json&action=update" );
+	request.open("POST", host + "?user="+username+"&format=json&action=update" );
 	request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	var allday = f["allday"].checked;
 	request.send(
@@ -427,7 +428,7 @@ function deleteAppointment( id ) {
 		request.onreadystatechange = function() {
 			deleteAppointmentOnReadyStatusChangeEventHandler( request );
 		};
-		request.open("GET", "http://host.bisswanger.com/dhbw/calendar.php?user="+username+"&format=json&action=delete&id=" + encodeURIComponent(id) );
+		request.open("GET", host + "?user="+username+"&format=json&action=delete&id=" + encodeURIComponent(id) );
 		request.send();
 	}
 }
@@ -479,7 +480,7 @@ function uploadImage( id ) {
 	request.onreadystatechange = function() {
 		uploadImageOnReadyStatusChangeEventHandler( request );
 	};
-	request.open("POST", "http://host.bisswanger.com/dhbw/calendar.php?user="+username+"&format=json&action=upload-image&id=" + id );
+	request.open("POST", host + "?user="+username+"&format=json&action=upload-image&id=" + id );
 	//request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	var formData = new FormData();
 	formData.append("file", f["image"].files[0]);
@@ -503,7 +504,7 @@ function deleteImage( id ) {
 			request.onreadystatechange = function() {
 				deleteImageOnReadyStatusChangeEventHandler( request, id );
 			};
-			request.open("GET", "http://host.bisswanger.com/dhbw/calendar.php?user="+username+"&format=json&action=delete-image&id=" + encodeURIComponent(id) );
+			request.open("GET", host + "?user="+username+"&format=json&action=delete-image&id=" + encodeURIComponent(id) );
 			request.send();
 		}
 	}
@@ -559,7 +560,7 @@ function addCategory( id ) {
 	request.onreadystatechange = function() {
 		addCategoryOnReadyStatusChangeEventHandler( request, id );
 	};
-	request.open("GET", "http://host.bisswanger.com/dhbw/calendar.php?user="+username+"&format=json&action=put-category&event=" + id + "&category=" + f["category"].value );
+	request.open("GET", host + "?user="+username+"&format=json&action=put-category&event=" + id + "&category=" + f["category"].value );
 	request.send();
 }
 function addCategoryOnReadyStatusChangeEventHandler( request, id ) {
@@ -579,7 +580,7 @@ function deleteCategoryFromEvent( eventId, categoryId ) {
 	request.onreadystatechange = function() {
 		deleteCategoryFromEventOnReadyStatusChangeEventHandler( request, eventId, categoryId );
 	};
-	request.open("GET", "http://host.bisswanger.com/dhbw/calendar.php?user="+username+"&format=json&action=remove-category&event=" + eventId + "&category=" + categoryId );
+	request.open("GET", host + "?user="+username+"&format=json&action=remove-category&event=" + eventId + "&category=" + categoryId );
 	request.send();
 }
 function deleteCategoryFromEventOnReadyStatusChangeEventHandler( request, eventId, categoryId ) {
