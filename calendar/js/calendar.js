@@ -4,6 +4,20 @@ var categories;
 var filter = 0;
 var host = "//dhbw.t-battermann.de/calendar/redirect.php";
 
+function showAlert( type, info, text ) {
+	div = document.createElement("div");
+	if ( type != "success" && type != "info" && type != "warning" && type != "danger")
+		type = "info";
+	div.className = "alert alert-" + type + " alert-dismissible";
+	div.innerHTML = '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
+	str = document.createElement("strong");
+	str.appendChild(document.createTextNode( info + " " ));
+	div.appendChild(str);
+	div.appendChild(document.createTextNode( text ));
+	e = document.getElementById("right");
+	e.insertBefore( div, e.firstChild );
+}
+
 function getListItems() {
 	var request = new XMLHttpRequest();
 	request.onreadystatechange = function() {
@@ -248,7 +262,7 @@ function createNewCategoryOnReadyStatusChangeEventHandler( request ) {
 	if( request.readyState == 4 && (request.status == 200 || request.status == 0) ) {
 		var c = eval('(' + request.responseText + ')');
 		if (typeof c.error != 'undefined') {
-			alert( c.error.text );
+			showAlert( "danger", "Error!", c.error.text );
 		}else{
 			getCategories();
 		}
@@ -302,7 +316,7 @@ function deleteCategoryOnReadyStatusChangeEventHandler( request ) {
 	if( request.readyState == 4 && (request.status == 200 || request.status == 0) ) {
 		var c = eval('(' + request.responseText + ')');
 		if (typeof c.error != 'undefined') {
-			alert( c.error.text );
+			showAlert( "danger", "Error!", c.error.text );
 		}else{
 			getCategories();
 			getListItems();
@@ -346,10 +360,10 @@ function createNewEntryOnReadyStatusChangeEventHandler( request ) {
 	if( request.readyState == 4 && (request.status == 200 || request.status == 0) ) {
 		var c = eval('(' + request.responseText + ')');
 		if (typeof c.error !== 'undefined') {
-			alert( c.error.text );
+			showAlert( "danger", "Error!", c.error.text );
 		}else{
 			getListItems();
-			alert("Success!");
+			showAlert( "success", "Success!", "The entry was successfully created" );
 		}
 	}
 }
@@ -373,7 +387,7 @@ function loadEditFormOnReadyStatusChangeEventHandler( id, request ) {
 			}
 		}
 		if (appointment == null) {
-			alert("Appointment not found!");
+			showAlert( "warning", "Warning!", "Appointment not found" );
 			return;
 		}
 		var f = document.getElementById("calendar-entry");
@@ -415,10 +429,10 @@ function updateAppointmentOnReadyStatusChangeEventHandler( request ) {
 	if( request.readyState == 4 && (request.status == 200 || request.status == 0) ) {
 		var c = eval('(' + request.responseText + ')');
 		if (typeof c.error !== 'undefined') {
-			alert( c.error.text );
+			showAlert( "danger", "Error!", c.error.text );
 		}else{
 			getListItems();
-			alert("Success!");
+			showAlert( "success", "Success!", "The entry was successfully updated" );
 		}
 	}
 }
@@ -436,10 +450,10 @@ function deleteAppointmentOnReadyStatusChangeEventHandler( request ) {
 	if( request.readyState == 4 && (request.status == 200 || request.status == 0) ) {
 		var c = eval('(' + request.responseText + ')');
 		if (typeof c.error !== 'undefined') {
-			alert( c.error.text );
+			showAlert( "danger", "Error!", c.error.text );
 		}else{
 			getListItems();
-			alert("Success!");
+			showAlert( "success", "Success!", "The entry was successfully deleted" );
 		}
 	}
 }
@@ -473,7 +487,7 @@ function uploadImage( id ) {
 	}
 	var f = document.getElementById("appointment-" + id);
 	if (f["image"].files[0].type != "image/jpeg" && f["image"].files[0].type != "image/png") {
-		alert("Images must be of type JPEG or PNG");
+		showAlert( "danger", "Wrong type!", "Images must be of type JPEG or PNG" );
 		return;
 	}
 	var request = new XMLHttpRequest();
@@ -490,10 +504,10 @@ function uploadImageOnReadyStatusChangeEventHandler( request, id ) {
 	if( request.readyState == 4 && (request.status == 200 || request.status == 0) ) {
 		var c = eval('(' + request.responseText + ')');
 		if (typeof c.error !== 'undefined') {
-			alert( c.error.text );
+			showAlert( "danger", "Error!", c.error.text );
 		}else{
 			getListItems();
-			alert("Success!");
+			showAlert( "success", "Success!", "The image was successfully saved" );
 		}
 	}
 }
@@ -513,13 +527,13 @@ function deleteImageOnReadyStatusChangeEventHandler( request, id ) {
 	if( request.readyState == 4 && (request.status == 200 || request.status == 0) ) {
 		var c = eval('(' + request.responseText + ')');
 		if (typeof c.error !== 'undefined') {
-			alert( c.error.text );
+			showAlert( "danger", "Error!", c.error.text );
 		}else{
 			elem = document.getElementById("img-" + id);
 			elem.parentElement.removeChild(elem);
 			elem = document.getElementById("imf-" + id);
 			elem.parentElement.removeChild(elem);
-			alert("Success!");
+			showAlert( "success", "Success!", "The image was successfully deleted" );
 		}
 	}
 }
@@ -567,10 +581,10 @@ function addCategoryOnReadyStatusChangeEventHandler( request, id ) {
 	if( request.readyState == 4 && (request.status == 200 || request.status == 0) ) {
 		var c = eval('(' + request.responseText + ')');
 		if (typeof c.error !== 'undefined') {
-			alert( c.error.text );
+			showAlert( "danger", "Error!", c.error.text );
 		}else{
 			getListItems();
-			alert("Success!");
+			showAlert( "success", "Success!", "The category was successfully created" );
 		}
 	}
 }
@@ -587,7 +601,7 @@ function deleteCategoryFromEventOnReadyStatusChangeEventHandler( request, eventI
 	if( request.readyState == 4 && (request.status == 200 || request.status == 0) ) {
 		var c = eval('(' + request.responseText + ')');
 		if (typeof c.error !== 'undefined') {
-			alert( c.error.text );
+			showAlert( "danger", "Error!", c.error.text );
 		}else{
 			elem = document.getElementById( "cat-" + eventId + "-" + categoryId );
 			elem.parentElement.removeChild(elem);
