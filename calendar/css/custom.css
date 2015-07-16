@@ -31,6 +31,9 @@ input:invalid, textarea:invalid, select:invalid {
 .org {
 	list-style-image:url(../images/organizer.png);
 }
+.url {
+	list-style-image:url(../images/link.png);
+}
 .action {
 	list-style-image:url(../images/action.png);
 }
