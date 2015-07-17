@@ -2,8 +2,8 @@ html {
 	overflow-x: auto;
 	overflow-y: scroll;
 }
-body {
-	padding-top: 95px;
+.navbar {
+	border-radius:0;
 }
 .starter-template {
 	padding: 40px 15px;
