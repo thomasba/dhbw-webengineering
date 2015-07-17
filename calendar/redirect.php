@@ -77,4 +77,5 @@ curl_close($ch);
 
 // return web service result
 print $result;
-?>
+
+// vim: set ft=php shiftwidth=4 noexpandtab eol ff=unix :

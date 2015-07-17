@@ -44,7 +44,7 @@ input:invalid, textarea:invalid, select:invalid {
 .mar {
 	margin:1.5em;
 }
-.navbar h1 {
+h1 {
 	font-family:monospace;
 	letter-spacing:0.4em;
 	text-align:center;
@@ -62,5 +62,6 @@ input:invalid, textarea:invalid, select:invalid {
 	color:#bce8f1;
 }
 .nobold {
-	font-weight:normal !important;
+	font-weight:normal;
 }
+/* vim: set ft=css shiftwidth=4 noexpandtab eol ff=unix : */

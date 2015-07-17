@@ -2,7 +2,8 @@ var username = "";
 var appointments;
 var categories;
 var filter = 0;
-var host = "//dhbw.t-battermann.de/calendar/redirect.php";
+//var host = "//dhbw.t-battermann.de/calendar/redirect.php";
+var host = "http://host.bisswanger.com/dhbw/calendar.php";
 
 function showAlert( type, info, text ) {
 	div = document.createElement("div");
@@ -649,3 +650,5 @@ function login() {
 login();
 showCategory(0);
 getCategories();
+
+// vim: set ft=javascript shiftwidth=4 noexpandtab eol ff=unix :
