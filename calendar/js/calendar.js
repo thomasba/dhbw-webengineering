@@ -66,7 +66,7 @@ function getListItemOnReadyStatusChangeEventHandler( request, id ) {
 		document.getElementById("content").appendChild(header);
 		var c = eval('(' + request.responseText + ')');
 		appointments = c["events"]["events"];
-		appointments = appointments.sort( function (a,b) {return a.start > b.start });
+		appointments = appointments.sort( function (a,b) {return a.start > b.start ? 1 : (a.start == b.start ? 0 : -1)});
 		var past = document.getElementById("showPastAppointments").checked;
 		if (!past || id != 0) {
 			var app = [];
